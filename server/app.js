@@ -3,7 +3,7 @@ var express = require('express');
 var app = express();
 var path = require('path');
 var bodyParser = require('body-parser');
-var urlEncodedParser = bodyParser.urlencoded({extended:false});
+var urlEncodedParser = bodyParser.urlEncoded({extended:false});
 
 var portDecision = process.env.PORT || 3000;
 
@@ -18,8 +18,11 @@ app.get('/', function(req,res){
   res.sendFile(path.resolve('public/index.html'));
 }); // end get
 
+// setup 'public' as a static resource /// this means anyone can use it
+app.use(express.static('public'));
+
 //get requested calculation and calculate
-app.post( '/calculate', urlencodedParser, function ( req, res) {
+app.post( '/calculate', urlEncodedParser, function ( req, res) {
   //console.log('in post');
   //console.log('this is req', req.body);
   //calculate string
@@ -30,5 +33,3 @@ app.post( '/calculate', urlencodedParser, function ( req, res) {
   res.send(sendBack);
   console.log(sendBack);
 });
-// setup 'public' as a static resource /// this means anyone can use it
-app.use(express.static('public'));

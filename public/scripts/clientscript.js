@@ -23,7 +23,7 @@ $(document).ready(function(){
       var nextInput = $(this).attr('data');
 
       //put in calculationIn array
-      calculationIn += nextInput;
+      calculation += nextInput;
       console.log(calculation);
       //display current calculation
       $('.outputScreen').html(calculation);
@@ -56,4 +56,4 @@ $(document).ready(function(){
 
   });
 
-}); // end document ready
+ // end document ready
