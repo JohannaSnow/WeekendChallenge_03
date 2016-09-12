@@ -39,6 +39,7 @@ $(document).ready(function(){
           var endResults = data.takeThis;
           console.log(endResults);
           $('.outputScreen').html(endResults);
+          // $('.outputScreen').empty();
         },
         error: function (data) {
           console.log('');
