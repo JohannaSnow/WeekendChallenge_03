@@ -3,7 +3,7 @@ var express = require('express');
 var app = express();
 var path = require('path');
 var bodyParser = require('body-parser');
-var urlEncodedParser = bodyParser.urlencoded({extended:false});
+var urlencodedParser = bodyParser.urlencoded({extended:false});
 
 var portDecision = process.env.PORT || 3000;
 
@@ -13,7 +13,7 @@ app.listen( portDecision, function(){
 }); //end server powering up
 
 // base url hit
-app.get('/', urlEncodedParser, function(req,res){
+app.get('/', function(req,res){
   console.log('base url hit');
   res.sendFile(path.resolve('public/index.html'));
 }); // end get
@@ -22,7 +22,7 @@ app.get('/', urlEncodedParser, function(req,res){
 app.use(express.static('public'));
 
 //get requested calculation and calculate numbers sent
-app.post( '/calculate', urlEncodedParser, function ( req, res) {
+app.post( '/calculate', urlencodedParser, function ( req, res) {
   //console.log('in post');
   //console.log('this is req', req.body);
   //calculate string
