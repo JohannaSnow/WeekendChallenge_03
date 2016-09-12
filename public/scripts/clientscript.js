@@ -7,10 +7,6 @@ var calculation = '';
 $(document).ready(function(){
   console.log('Document ready!');
 
-  //console.log('sourced');
-  var calculation = '';
-
-
   //get calculator button input
     $('button').on('click', function () {
       if ($(this).attr('data') === "="){
@@ -22,7 +18,7 @@ $(document).ready(function(){
       //console.log('in button click');
       var nextInput = $(this).attr('data');
 
-      //put in calculationIn array
+      //put in calculation array
       calculation += nextInput;
       console.log(calculation);
       //display current calculation
@@ -30,8 +26,8 @@ $(document).ready(function(){
       }
     });
 
-    var results = function () {
-      console.log('in results');
+    var returnResults = function () {
+      console.log('in returnResults');
       var calculationSent = {takeThis: calculation};
       console.log(calculationSent);
       $.ajax({
@@ -40,9 +36,9 @@ $(document).ready(function(){
         data: calculationSent,
         success: function (data) {
           console.log(data);
-          var finalResults = data.takeThis;
-          console.log(finalResults);
-          $('.outputScreen').html(finalResults);
+          var endResults = data.takeThis;
+          console.log(endResults);
+          $('.outputScreen').html(endResults);
         },
         error: function (data) {
           console.log('');
