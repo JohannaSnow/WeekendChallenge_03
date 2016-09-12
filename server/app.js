@@ -7,6 +7,8 @@ var urlencodedParser = bodyParser.urlencoded({extended:false});
 
 var portDecision = process.env.PORT || 3000;
 
+// setup 'public' as a static resource /// this means anyone can use it
+app.use(express.static('public'));
 // spin up server
 app.listen( portDecision, function(){
   console.log('Server is listening on heroku or port 3000');
@@ -18,13 +20,10 @@ app.get('/', function(req,res){
   res.sendFile(path.resolve('public/index.html'));
 }); // end get
 
-// setup 'public' as a static resource /// this means anyone can use it
-app.use(express.static('public'));
-
 //get requested calculation and calculate numbers sent
 app.post( '/calculate', urlencodedParser, function ( req, res) {
   //console.log('in post');
-  //console.log('this is req', req.body);
+  //console.log('this is req',  req.body);
   //calculate string
   var finishedCalculation = eval(req.body.takeThis);
   console.log('finishedCalculation', finishedCalculation);
